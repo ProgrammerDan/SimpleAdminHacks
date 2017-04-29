@@ -1,4 +1,4 @@
-# Effectively Modern Humbug. For 1.9 ground up.
+# Effectively Modern Humbug. For 1.10 ground up.
 
 configuration_file_version: 1
 
@@ -6,40 +6,75 @@ debug: true
 broadcast_permission: simpleadmin.broadcast
 
 hacks:
-  experimental:
-    name: Experimental
+  Experimental:
     enabled: true
-    combatspy: true
-    teleportspy: true
+    combatspy: false
+    teleportspy: false
     postteleport:
-      spy: true
+      spy: false
       count: 10
-  game_features:
-    name: GameFeatures
-    enabled: false
+  GameFeatures:
+    enabled: true
+    disablePotatoXP: false
+    # Villager trading is not like above and true = able to trade and false = not able
+    villagerTrading: false
+    # Wither spawn is also true = enabled and false = disabled
+    witherSpawning: false
+    # Enderchests is also true = enabled and false = disabled
+    enderChestPlacement: false
     elytra: off
     chorus_fruit: off
-  game_fixes:
-    name: GameFixes
-    enabled: false
-    nether_bed_placement: off
-  game_tuning:
-    name: GameTuning
-    enabled: false
-    str2: replace_str1ext
-    pearl_gravity: 0.3
-  combattag_announce:
-    name: CombatTagAnnounce
+    # WeepingAngel bans people when they die, the numbers are in minutes.
+    weepingAngel:
+      enabled: false
+      environment: 1
+      playerKill: 5
+  GameFixes:
+    enabled: true
+    # Does not fully work atm
+    blockElytraBreakBug: false
+    damageOnElytraBreakBug: 1.0
+    canStorageTeleport: false
+    stopHopperDupe: true
+    stopRailDupe: true
+    stopEndPortalDeletion: true
+  GameTuning:
+    enabled: true
+    chunkLimits:
+      enabled: true
+      exceededMessage: '&9Limit reached for this chunk, you cannot place more of this type of block.'
+      tileEntities:
+        HOPPER: 4
+        PISTON_BASE: 4
+        PISTON_STICKY_BASE: 4
+        DISPENSER: 4
+        DROPPER: 4
+        REDSTONE_COMPARATOR: 4
+      exempt:
+      - Steve
+      - Alex
+    daytimeBed:
+      enabled: true
+      spawnSetMessage: '&7Your spawn has been set.'
+    # Makes nether ratio 1 to 1
+    oneToOneNether: false
+    # Return nether portal, true = enabled    false = disabled
+    returnNetherPortal: true
+    # Disables minecart inventories (trying to fix dupe issues)
+    # enabled = able to right click   disabled = not able to right click
+    chestedMinecartInventories: true
+    hopperMinecartInventories: true
+  CTAnnounce:
     enabled: false
     delay: 10000
     message: '%Victim% was combat tagged by %Attacker%'
     broadcast: [OP, CONSOLE]
-  newfriend:
-    name: NewfriendAssist
+  CrazyCratesAnnounce:
+    enabled: false
+  NewfriendAssist:
     enabled: true
-    announce:
-      message: '%Player% is brand new!'
-      broadcast: [PERM, CONSOLE]
+    announce: '&f%Player% is brand new!'
+    broadcast: [PERM, CONSOLE]
     helptips: on
     helptips_end: 20m
     introkit:
@@ -65,17 +100,17 @@ hacks:
             - "This world is unforgiving."
             - "Be sure to get a good night's"
             - "rest soon."
-  introbook:
-    name: Introbook
+  Introbook:
     enabled: true
     follow: true
     contents:
-      title: Welcome to Devoted
+      title: Welcome, ${player}
       author: Bonkill
       pages:
+       - "   &oWelcome to Devoted, ${player}!"
        - "    &oWhat is Devoted?\n\"A new type of Minecraft server built towards providing a competitive, high stakes, immersive experience controlled by the players.\"&r\n-ShadedJon, server owner"
        - "    &oWhat is Devoted?&r\n&lNOT just survival&r\nAdmins are hands-off and only handle glitches and hackers\n&lNOT just chaos&r\nPlugins allow players and towns to enforce their own rules\n&lNOT just roleplay&r\nNobody pretends -- conflict is genuine and heated"
-       - "    &oBasic Mechanics&r\n-The world has many continents\n-They're separated by ocean.\n-Limited chat range\n-Respawn in random area unless you sleep\n-Mobs spawn sparsely\n-Vanilla Nether\n-Ore veins and vanilla ore spawning."
+       - "    &oBasic Mechanics&r\n-The world is custom generated\n-Many custom biomes\n-Limited chat range\n-Respawn in random area unless you sleep\n-Mobs spawn sparsely\n-Vanilla Nether\n-Ore veins and custom ore spawning."
        - "   &oDevoted Mods&r\n   &lCitadel&r:\n Reinforces things so it takes numerous breaks to destroy them. Locks some things too.\n&lMore Info:&r &oVisual Guide:&r imgur.com/BnlL2 &oWiki Page:&r tinyurl.com/citadelmod\n&oType \"/help citadel\" in chat to get commands"
        - "   &lPrison Pearl&r:\n Ender Pearls trap players in the end. Others can steal back your pearl and free you -- you always know where it is so they cannot hide it\n&lMore Info:&r &oVisual Guide:&r imgur.com/XbhkK &oWiki Page:&r tinyurl.com/prisperl"
        - "   &lJuke Alert&r:\n Creates 'Juke' blocks that record player activity in radius. If you steal, grief, or trespass -- people will know about it & put a bounty for you to be pearled.\n&lMore Info:&r &oWiki Page:&r tinyurl.com/snitchblock"
@@ -87,9 +122,8 @@ hacks:
        - "   &lBrewery&r:\n Custom brewing of booze and more.\n&lMore Info:&r &oBukkit Page:&r tinyurl.com/bukkitbrewp"
        - "   &oFurther Info&r\nVisit our subreddit at: &oreddit.com/r/Devoted&r"
        - "We extend our appreciation to the devs, admins, and players at: &oreddit.com/r/Civcraft"
-  hackbot:
-    name: HackBot
-    enabled: true
+  HackBot:
+    enabled: false
     bots:
       Rando:
         name: Rando4800xXx
@@ -111,6 +145,46 @@ hacks:
           y: 40.0
           world: world
           x: 50.0
-  invctrl:
-    name: InvControl
+  InvControl:
     enabled: true
+  InvisibleFixTwo:
+    enabled: true
+    # in ticks -- ticks to wait after teleport to force update
+    teleportDelay: 5
+    # in milliseconds -- min time between forced updates if active
+    minInterval: 100
+  InvisibleFix:
+    enabled: true
+    ignoreOps: true
+    ignorePermission: sah.allowInvisible
+    # in ticks
+    recheckInterval: 500
+  ReinforcedChestBreak:
+    enabled: true
+    # in seconds
+    delay: 180
+    message: "&4%player% is raiding a chest at %x% %y% %z%."
+  SanityHack:
+    enabled: true
+    trackPlace: true
+    trackBreak: true
+    belowYLevel: 7
+  TimingsHack:
+    enabled: true
+  BadBoyWatch:
+    enabled: true
+    trackingDepth: 16
+    clearOnMatch: true
+    watchedMaterials:
+     - CHEST
+     - FURNACE
+     - DROPPER
+     - DISPENSER
+     - JUKEBOX
+     - NOTE_BLOCK
+     - BEACON
+     - ENDER_CHEST
+     - SPONGE
+     - HOPPER
+     - PISTON_BASE
+     - PISTON_STICKY_BASE

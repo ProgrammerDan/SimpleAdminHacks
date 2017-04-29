@@ -27,9 +27,9 @@ public abstract class SimpleHackConfig {
 	public SimpleHackConfig(SimpleAdminHacks plugin, ConfigurationSection base) {
 		this.plugin = plugin;
 		this.base = base;
-		this.name = base.getString("name");
+		this.name = base.getString("name", base.getName());
 		this.enabled = base.getBoolean("enabled", false);
-		plugin.log(Level.INFO, "Config for {0}, enabled set to {1}", this.name, this.enabled);
+		plugin.log(Level.INFO, "Config for {0}, enabled set to {1}, instance {2}", this.name, this.enabled, this.toString());
 		this.wireup(base);
 	}
 

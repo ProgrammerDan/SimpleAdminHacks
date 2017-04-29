@@ -6,10 +6,10 @@
   <groupId>com.programmerdan.minecraft</groupId>
   <artifactId>SimpleAdminHacks</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.6</version>
+  <version>1.0.25</version>
   <name>SimpleAdminHacks</name>
   <url>https://github.com/DevotedMC/SimpleAdminHacks</url>
-  
+
   <build>
     <finalName>${project.name}-${project.version}</finalName>
     <plugins>
@@ -17,8 +17,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <compilerArgument></compilerArgument>
         </configuration>
       </plugin>
@@ -97,13 +97,17 @@
       <id>dmulloy2-repo</id>
       <url>http://repo.dmulloy2.net/content/groups/public/</url>
     </repository>
+    <repository>
+      <id>devoted-repo</id>
+      <url>https://build.devotedmc.com/plugin/repository/everything/</url>
+    </repository>
   </repositories>
 
   <dependencies>
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot</artifactId>
-      <version>1.10</version>
+      <version>1.10.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -137,9 +141,30 @@
     <dependency>
       <groupId>vg.civcraft.mc.namelayer</groupId>
       <artifactId>NameLayer</artifactId>
-      <version>2.8.03</version>
+      <version>2.9.08</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>vg.civcraft.mc.citadel</groupId>
+      <artifactId>Citadel</artifactId>
+      <version>3.7.02</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>vg.civcraft.mc.civmodcore</groupId>
+      <artifactId>CivModCore</artifactId>
+      <version>1.5.09</version>
+      <scope>provided</scope>
+    </dependency>
+<!--  Note: CrazyCrates isn't distributed in POM form.
+  For this to build successfully, use install:install-file with
+  attributes as below. -->
+    <dependency>
+      <groupId>me.badbones69</groupId>
+      <artifactId>CrazyCrates</artifactId>
+      <version>1.7.1.5</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
- 
+
 </project>
